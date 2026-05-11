@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Determend – Join Our Boys</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700;800;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #F97316;
+    --dark: #111111;
+    --mid: #1a1a1a;
+    --light-bg: #f5f5f0;
+    --white: #ffffff;
+    --grey: #888;
+    --light-grey: #e5e5e0;
+    --text: #222;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+  body { font-family: 'Montserrat', sans-serif; background: var(--white); color: var(--text); overflow-x: hidden; }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(17,17,17,0.97); backdrop-filter: blur(8px);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%; height: 64px;
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem;
+    color: var(--orange); letter-spacing: 2px; text-decoration: none;
+  }
+  .nav-logo span { color: var(--white); }
+  .nav-links { display: flex; gap: 0; list-style: none; }
+  .nav-links a {
+    color: #ccc; text-decoration: none; font-size: 0.68rem;
+    font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase;
+    padding: 8px 12px; transition: color 0.2s;
+    display: block;
+  }
+  .nav-links a:hover { color: var(--orange); }
+  .nav-links .cta-link a {
+    background: var(--orange); color: #fff; border-radius: 3px;
+    padding: 8px 14px;
+  }
+  .nav-links .cta-link a:hover { background: #e05d00; color: #fff; }
+  .hamburger {
+    display: none; flex-direction: column; gap: 5px; cursor: pointer;
+    background: none; border: none; padding: 4px;
+  }
+  .hamburger span { width: 26px; height: 2px; background: #fff; display: block; transition: all 0.3s; }
+  .mobile-menu {
+    display: none; position: fixed; top: 64px; left: 0; right: 0;
+    background: #111; z-index: 999; flex-direction: column; padding: 16px 0;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    color: #ccc; text-decoration: none; font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 1.2px; text-transform: uppercase; padding: 12px 24px;
+    border-bottom: 1px solid #222; transition: color 0.2s;
+  }
+  .mobile-menu a:hover { color: var(--orange); }
+
+  /* ─── SECTIONS ─── */
+  section { position: relative; }
+
+  /* ─── HERO ─── */
+  #home {
+    min-height: 100vh; background: var(--dark);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 100px 5% 60px; text-align: center; overflow: hidden;
+  }
+  .hero-tagline {
+    font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--orange); font-weight: 700; margin-bottom: 20px;
+  }
+  .hero-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 8vw, 7rem);
+    color: var(--white); line-height: 1; margin-bottom: 16px;
+    letter-spacing: 3px;
+  }
+  .hero-headline .accent { color: var(--orange); }
+  .hero-sub {
+    font-size: clamp(0.95rem, 2vw, 1.15rem); color: #aaa;
+    max-width: 600px; line-height: 1.7; margin-bottom: 12px; font-weight: 300;
+  }
+  .hero-sub strong { color: var(--white); }
+  .hero-fee-box {
+    background: rgba(249,115,22,0.12); border: 1px solid rgba(249,115,22,0.3);
+    border-radius: 8px; padding: 14px 24px; margin: 16px 0 28px;
+    max-width: 520px;
+  }
+  .hero-fee-box p {
+    color: #ccc; font-size: 0.82rem; line-height: 1.6; font-weight: 400;
+  }
+  .hero-fee-box p strong { color: var(--orange); }
+  .hero-slogan {
+    font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    color: var(--white); letter-spacing: 2px; margin-bottom: 28px;
+  }
+  .hero-slogan .end-accent { color: var(--orange); }
+  .logo-img {
+    width: clamp(160px, 28vw, 260px);
+    margin-bottom: 32px; filter: drop-shadow(0 0 30px rgba(249,115,22,0.2));
+  }
+  .btn {
+    display: inline-block; padding: 14px 32px; border-radius: 4px;
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; text-decoration: none; transition: all 0.25s; cursor: pointer;
+  }
+  .btn-orange { background: var(--orange); color: #fff; }
+  .btn-orange:hover { background: #e05d00; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(249,115,22,0.35); }
+  .btn-outline { border: 2px solid rgba(255,255,255,0.3); color: #fff; }
+  .btn-outline:hover { border-color: var(--orange); color: var(--orange); transform: translateY(-2px); }
+  .hero-btns { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+  .orange-divider { width: 60px; height: 3px; background: var(--orange); margin: 0 auto 32px; }
+
+  /* ─── CAMPAIGN ─── */
+  #campaign {
+    background: var(--light-bg);
+    padding: 80px 5%;
+  }
+  .campaign-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+  }
+  .campaign-label {
+    font-size: 0.65rem; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--orange); font-weight: 700; margin-bottom: 10px;
+  }
+  .campaign-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1; margin-bottom: 16px;
+    color: var(--dark);
+  }
+  .campaign-img {
+    width: 100%; border-radius: 6px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    object-fit: cover; aspect-ratio: 4/3;
+  }
+  .campaign-text { color: #555; font-size: 0.95rem; line-height: 1.75; margin-bottom: 24px; }
+  .campaign-links { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 32px; }
+  .campaign-links a { font-size: 0.7rem; }
+  .campaign-secondary { background: var(--dark); border-radius: 8px; padding: 28px; color: #aaa; margin-top: 24px; }
+  .campaign-secondary h3 {
+    font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: var(--white);
+    letter-spacing: 2px; margin-bottom: 12px;
+  }
+  .campaign-secondary p { font-size: 0.88rem; line-height: 1.7; }
+
+  /* ─── COUNTDOWN ─── */
+  .countdown-wrap {
+    background: var(--orange); padding: 40px 5%; text-align: center;
+  }
+  .countdown-label {
+    font-size: 0.65rem; letter-spacing: 4px; text-transform: uppercase;
+    color: rgba(255,255,255,0.7); font-weight: 700; margin-bottom: 16px;
+  }
+  .countdown {
+    display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  .countdown-unit { text-align: center; }
+  .countdown-num {
+    font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 6vw, 4rem);
+    color: var(--white); line-height: 1; display: block;
+  }
+  .countdown-word {
+    font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase;
+    color: rgba(255,255,255,0.75); font-weight: 600;
+  }
+  .countdown-sep {
+    font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: rgba(255,255,255,0.4);
+    align-self: flex-start; margin-top: 4px;
+  }
+  .coming-soon-row {
+    background: var(--dark); padding: 40px 5%; text-align: center;
+  }
+  .coming-soon-row h3 {
+    font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; color: var(--orange);
+    letter-spacing: 3px; margin-bottom: 16px;
+  }
+  .coming-soon-links { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; }
+  .coming-soon-links a {
+    color: #aaa; font-size: 0.75rem; font-weight: 600; letter-spacing: 1px;
+    text-transform: uppercase; text-decoration: none; border: 1px solid #333;
+    padding: 10px 20px; border-radius: 4px; transition: all 0.2s;
+  }
+  .coming-soon-links a:hover { border-color: var(--orange); color: var(--orange); }
+
+  /* ─── SOCIAL ROW ─── */
+  .social-row {
+    background: #111; padding: 20px 5%;
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 16px;
+  }
+  .social-link {
+    display: flex; align-items: center; gap: 7px;
+    color: #aaa; text-decoration: none; font-size: 0.7rem;
+    font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .social-link:hover { color: var(--orange); }
+  .social-link svg { width: 18px; height: 18px; fill: currentColor; }
+
+  /* ─── ABOUT ─── */
+  #aboutus {
+    background: var(--white); padding: 80px 5%;
+  }
+  .about-inner {
+    max-width: 760px; margin: 0 auto; text-align: center;
+    display: block;
+  }
+  .about-img {
+    width: 100%; border-radius: 6px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.12); object-fit: cover; aspect-ratio: 3/4;
+  }
+  .section-label {
+    font-size: 0.65rem; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--orange); font-weight: 700; margin-bottom: 10px;
+  }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1; margin-bottom: 8px;
+  }
+  .section-subtitle {
+    font-size: 0.8rem; letter-spacing: 1px; color: #888;
+    text-transform: uppercase; font-weight: 600; margin-bottom: 24px;
+  }
+  .about-block { margin-bottom: 24px; }
+  .about-block h4 {
+    font-size: 0.75rem; font-weight: 800; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--dark); margin-bottom: 8px;
+  }
+  .about-block p { font-size: 0.9rem; line-height: 1.8; color: #555; }
+  .about-quote {
+    border-left: 3px solid var(--orange); padding-left: 20px;
+    font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem;
+    color: var(--dark); letter-spacing: 1.5px; line-height: 1.4;
+    margin: 24px 0;
+  }
+
+  /* ─── EVENTS ─── */
+  #events { background: var(--dark); padding: 80px 5%; }
+  .events-inner { max-width: 1100px; margin: 0 auto; }
+  .events-header {
+    display: flex; justify-content: center; margin-bottom: 64px;
+    text-align: center;
+  }
+  .events-header-text {
+    max-width: 760px; width: 100%;
+  }
+  .events-title-block .section-label { }
+  .events-title-block .section-title { color: var(--white); }
+  .events-main-text { color: #aaa; font-size: 0.9rem; line-height: 1.8; }
+  .events-main-text strong { color: var(--white); }
+  .events-main-text em { font-style: normal; color: var(--orange); font-weight: 700; }
+  .events-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+  .event-card {
+    background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 8px;
+    padding: 28px; transition: border-color 0.2s;
+  }
+  .event-card:hover { border-color: var(--orange); }
+  .event-card-tag {
+    font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--orange); font-weight: 700; margin-bottom: 10px;
+  }
+  .event-card h3 {
+    font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: var(--white);
+    letter-spacing: 2px; margin-bottom: 6px; line-height: 1.2;
+  }
+  .event-card-loc {
+    font-size: 0.72rem; color: #777; text-transform: uppercase;
+    letter-spacing: 1px; margin-bottom: 14px;
+  }
+  .event-card p { font-size: 0.85rem; color: #999; line-height: 1.7; margin-bottom: 18px; }
+  .event-card-status {
+    font-size: 0.68rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;
+    color: #ef4444; padding: 4px 0; margin-bottom: 14px;
+  }
+  .event-card .btn { font-size: 0.65rem; padding: 10px 20px; }
+
+  /* ─── WHY US ─── */
+  #whyus { background: var(--light-bg); padding: 80px 5%; }
+  .whyus-inner { max-width: 1100px; margin: 0 auto; }
+  .whyus-top {
+    display: block; margin-bottom: 64px;
+  }
+  .whyus-img { width: 100%; border-radius: 6px; object-fit: cover; aspect-ratio: 4/3; box-shadow: 0 20px 60px rgba(0,0,0,0.15); }
+  .features-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 40px;
+  }
+  .feature-item {
+    background: var(--white); border-radius: 6px; padding: 16px 18px;
+    display: flex; align-items: flex-start; gap: 10px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .feature-check {
+    width: 20px; height: 20px; background: var(--orange); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
+  }
+  .feature-check svg { width: 11px; height: 11px; fill: none; stroke: #fff; stroke-width: 2.5; }
+  .feature-item span { font-size: 0.78rem; font-weight: 600; color: var(--dark); line-height: 1.4; }
+  .whyus-details { }
+  .whyus-details h3 {
+    font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; color: var(--dark);
+    letter-spacing: 2px; margin-bottom: 20px;
+  }
+  .detail-item {
+    display: flex; gap: 14px; padding: 14px 0;
+    border-bottom: 1px solid var(--light-grey);
+  }
+  .detail-num {
+    font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: var(--orange);
+    flex-shrink: 0; line-height: 1; width: 28px;
+  }
+  .detail-item p { font-size: 0.82rem; color: #555; line-height: 1.7; }
+  .whyus-cta { text-align: center; margin-top: 40px; }
+
+  /* ─── HOW IT WORKS ─── */
+  #howitworks { background: var(--dark); padding: 80px 5%; }
+  .how-inner { max-width: 1100px; margin: 0 auto; }
+  .how-top { display: block; text-align: left; margin-bottom: 64px; }
+  .how-top-text { display: block; max-width: 760px; margin: 0; }
+  .how-img { width: 100%; border-radius: 6px; object-fit: cover; aspect-ratio: 4/3; box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+  .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
+  .step-card {
+    background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 8px; padding: 28px;
+    position: relative; overflow: hidden;
+  }
+  .step-card::before {
+    content: attr(data-step); position: absolute; top: -10px; right: 14px;
+    font-family: 'Bebas Neue', sans-serif; font-size: 5rem; color: rgba(249,115,22,0.07);
+    line-height: 1;
+  }
+  .step-num {
+    font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; color: var(--orange);
+    line-height: 1; margin-bottom: 10px;
+  }
+  .step-title {
+    font-size: 0.7rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--white); margin-bottom: 10px;
+  }
+  .step-tag {
+    font-size: 0.6rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--orange); margin-bottom: 12px;
+  }
+  .step-card p { font-size: 0.82rem; color: #999; line-height: 1.7; }
+
+  /* ─── TERMS ─── */
+  #terms { background: var(--white); padding: 80px 5%; }
+  .terms-inner { max-width: 860px; margin: 0 auto; }
+  .terms-tabs {
+    display: flex; flex-wrap: wrap; gap: 0; border-bottom: 2px solid var(--light-grey);
+    margin-bottom: 40px;
+  }
+  .tab-btn {
+    background: none; border: none; padding: 12px 20px; font-family: 'Montserrat', sans-serif;
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+    color: #888; cursor: pointer; border-bottom: 3px solid transparent;
+    margin-bottom: -2px; transition: all 0.2s;
+  }
+  .tab-btn.active { color: var(--orange); border-bottom-color: var(--orange); }
+  .tab-btn:hover { color: var(--dark); }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+  .tab-panel h2 {
+    font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 2px;
+    color: var(--dark); margin-bottom: 24px;
+  }
+  .tab-panel h3 {
+    font-size: 0.8rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--dark); margin: 20px 0 8px;
+  }
+  .tab-panel p { font-size: 0.88rem; color: #555; line-height: 1.8; margin-bottom: 12px; }
+  .tab-panel ul { padding-left: 20px; margin-bottom: 12px; }
+  .tab-panel li { font-size: 0.85rem; color: #555; line-height: 1.8; }
+  .tab-panel hr { border: none; border-top: 1px solid var(--light-grey); margin: 20px 0; }
+  .tab-panel a { color: var(--orange); }
+
+  /* ─── CONTACT ─── */
+  #contact { background: var(--dark); padding: 60px 5%; text-align: center; }
+  .contact-inner { max-width: 600px; margin: 0 auto; }
+  .contact-inner .section-title { color: var(--white); margin-bottom: 24px; }
+  .contact-item { margin-bottom: 10px; }
+  .contact-item a { color: #aaa; text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+  .contact-item a:hover { color: var(--orange); }
+  .contact-item strong { color: #fff; font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; margin-right: 8px; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #0a0a0a; padding: 20px 5%;
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+    gap: 12px;
+  }
+  footer p { color: #555; font-size: 0.7rem; letter-spacing: 1px; }
+  footer a { color: #555; text-decoration: none; font-size: 0.7rem; letter-spacing: 1px; transition: color 0.2s; }
+  footer a:hover { color: var(--orange); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .campaign-inner, .about-inner, .events-header, .whyus-top, .how-top {
+      grid-template-columns: 1fr;
+    }
+    .features-grid { grid-template-columns: 1fr; }
+    .steps-grid { grid-template-columns: 1fr; }
+    .events-grid { grid-template-columns: 1fr; }
+    .about-img { aspect-ratio: 3/2; }
+    .campaign-img { order: -1; }
+  }
+
+  /* fade in */
+  .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <a class="nav-logo" href="#home">DETERM<span>END</span></a>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#aboutus">About</a></li>
+    <li><a href="https://app.determend.com/campaign/1775075249334x359091658528447600" target="_blank">Donate</a></li>
+    <li><a href="" target="_blank">Shop - Coming Soon</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#whyus">Why Us?</a></li>
+    <li class="cta-link"><a href="#howitworks">Start Now</a></li>
+    <li><a href="#coming">DETERMENDERS</a></li>
+    <li><a href="https://strava.app.link/S5XIhOllC1b" target="_blank">Strava</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home" onclick="closeMenu()">Home</a>
+  <a href="#aboutus" onclick="closeMenu()">About</a>
+  <a href="https://app.determend.com/campaign/1775075249334x359091658528447600" target="_blank">Donate</a>
+  <a href="https://app.determend.com/campaign/1775075249334x359091658528447600" target="_blank">Shop - Coming Soon</a>
+  <a href="#events" onclick="closeMenu()">Events</a>
+  <a href="#whyus" onclick="closeMenu()">Why Us?</a>
+  <a href="#howitworks" onclick="closeMenu()">Start Now</a>
+  <a href="#coming" onclick="closeMenu()">DETERMENDERS</a>
+  <a href="https://strava.app.link/S5XIhOllC1b" target="_blank">Strava</a>
+</div>
+
+<!-- ─── HERO ─── -->
+<section id="home">
+  <img class="logo-img" src="https://joinourboys.determend.com/assets/images/image02.png?v=2b87bf14" alt="Join Our Boys – Determend Logo">
+  <p class="hero-tagline">To Make A Change</p>
+  <h1 class="hero-headline">DETERM<span class="accent">END</span></h1>
+  <p class="hero-sub">Inspired by  Archie, George &amp; Isaac <br>The fight against Duchenne.<br>A Community Driven Movement.<br One Campaign at a time.<br>We Fundraise to <strong>MEND &amp; END</strong> things.</p>
+  <div class="hero-fee-box">
+    <p><strong>Transparent platform fees.</strong> This venture was born as a result of us losing thousands of hard-earned cash to other companies. On a mission to have the lowest transparent fees.</p>
+  </div>
+  <p class="hero-slogan">We are Determ<span class="end-accent">END</span> to <span class="end-accent">END</span> what holds people back.</p>
+  <div class="hero-btns">
+    <a href="https://app.determend.com/campaign/1775075249334x359091658528447600" target="_blank" class="btn btn-orange">View Join Our Boys Campaign</a>
+  </div>
+</section>
+
+<!-- ─── CAMPAIGN ─── -->
+<section id="campaign">
+  <div class="campaign-inner">
+    <div class="fade-in">
+      <p class="campaign-label">1st Campaign</p>
+      <h2 class="campaign-title">The Sweet 16 Global Move for The Join Our Boys Trust</h2>
+      <p class="campaign-text">Archie died when he was only 16. George and Isaac are now 16. Archie's dying wish was to not let the boys suffer like he did. Please participate if you can…</p>
+      <div class="campaign-links">
+        <a href="https://app.determend.com/campaign/1775075249334x359091658528447600" target="_blank" class="btn btn-orange">Donate Here</a>
+        <a href="https://efcf24c1.sibforms.com/serve/MUIFAJQb5IZOTbVE3AGk7Epq0zflYIwjvrI6rO3SQw-zy_2OqoXNnNgjLO7nKVhlnWXN5BpFBegyAhwIqago1Jc2XzrijLE9RpXGq7hwDf8E_MB7T7tN6iACzn97A-B6AtyDQtZBkskihzm-0GV0dXss_VkJQ3eBQIjjDlg9JuwVpQE1588JGHh_9n8qhxAYeQNlZfWbdJhQu4F06w==" target="_blank" class="btn btn-outline" style="border-color:#333;color:#444;">Start Your Sweet 16 Challenge</a>
+        <a href="https://strava.app.link/S5XIhOllC1b" target="_blank" class="btn btn-outline" style="border-color:#333;color:#444;">Join the Run Club</a>
+        <a href="https://chat.whatsapp.com/CKrVYdaIJQp09G3mRw2I73" target="_blank" class="btn btn-outline" style="border-color:#333;color:#444;">Join the Community Chat</a>
+      </div>
+      <div class="campaign-secondary">
+        <h3>Find Out More…</h3>
+        <p>About the campaign, upcoming events, and how you can get involved in the global movement.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:14px;">
+          <a href="#aboutus" class="btn btn-outline" style="font-size:0.65rem;padding:8px 18px;">About Us</a>
+          <a href="#events" class="btn btn-outline" style="font-size:0.65rem;padding:8px 18px;">Events</a>
+          <a href="https://app.determend.com/campaign/1775075249334x359091658528447600" target="_blank" class="btn btn-orange" style="font-size:0.65rem;padding:8px 18px;">Shop</a>
+        </div>
+      </div>
+    </div>
+    <div class="fade-in" style="transition-delay:0.15s">
+      <img class="campaign-img" src="https://joinourboys.determend.com/assets/images/image06.jpg?v=2b87bf14" alt="Sweet 16 Campaign">
+      <div style="margin-top:20px;background:#fff8f5;border-radius:8px;padding:20px;border:1px solid #fde8d8;">
+        <p style="font-size:0.8rem;color:#555;line-height:1.7;"><strong style="color:#111;">The Sweet 16 Global Campaign</strong><br>
+        Do 16 of something – run, bake, paint, walk, cycle or anything!<br>
+        Join the movement and help get started on raising awareness before the boys turn 16 on May 1st…</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── COUNTDOWN ─── -->
+<div class="countdown-wrap">
+  <p class="countdown-label">Time Remaining Until May 31st</p>
+  <div class="countdown">
+    <div class="countdown-unit"><span class="countdown-num" id="cd-days">00</span><span class="countdown-word">Days</span></div>
+    <div class="countdown-sep">—</div>
+    <div class="countdown-unit"><span class="countdown-num" id="cd-hours">00</span><span class="countdown-word">Hours</span></div>
+    <div class="countdown-sep">—</div>
+    <div class="countdown-unit"><span class="countdown-num" id="cd-mins">00</span><span class="countdown-word">Minutes</span></div>
+    <div class="countdown-sep">—</div>
+    <div class="countdown-unit"><span class="countdown-num" id="cd-secs">00</span><span class="countdown-word">Seconds</span></div>
+  </div>
+  <a href="https://efcf24c1.sibforms.com/serve/MUIFAJQb5IZOTbVE3AGk7Epq0zflYIwjvrI6rO3SQw-zy_2OqoXNnNgjLO7nKVhlnWXN5BpFBegyAhwIqago1Jc2XzrijLE9RpXGq7hwDf8E_MB7T7tN6iACzn97A-B6AtyDQtZBkskihzm-0GV0dXss_VkJQ3eBQIjjDlg9JuwVpQE1588JGHh_9n8qhxAYeQNlZfWbdJhQu4F06w==" target="_blank" class="btn" style="background:#fff;color:var(--orange);font-size:0.72rem;">JOIN THE SWEET 16 CHALLENGE →</a>
+</div>
+
+<!-- ─── COMING SOON ─── -->
+<div id="coming" class="coming-soon-row">
+  <h3>Coming Soon…</h3>
+  <div>
+    <p style="color:#ffffff";>
+      We will introduce you to our 16 Chosen Determend Champions
+    </p>
+</div>
+<br>
+  <div class="coming-soon-links">
+    <a href="https://determend.bubbleapps.io/version-test/login" target="_blank">🎙 Podcast</a>
+    <a href="https://determend.bubbleapps.io/version-test/all_campaigns" target="_blank">🎟 Online Auctions / Raffles</a>
+  </div>
+</div>
+
+<!-- ─── SOCIAL ROW ─── -->
+<div class="social-row">
+  <a href="https://www.instagram.com/determend_" target="_blank" class="social-link">
+    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+    Instagram
+  </a>
+  <a href="https://chat.whatsapp.com/CKrVYdaIJQp09G3mRw2I73" target="_blank" class="social-link">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    WhatsApp
+  </a>
+  <a href="mailto:info@determend.com" class="social-link">
+    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+    Email
+  </a>
+  <a href="https://strava.app.link/S5XIhOllC1b" target="_blank" class="social-link">
+    <svg viewBox="0 0 24 24"><path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.599h4.172L10.463 0l-7 13.828h4.169"/></svg>
+    Strava
+  </a>
+</div>
+
+<!-- ─── ABOUT ─── -->
+<section id="aboutus">
+  <div class="about-inner">
+    <div class="fade-in" style="transition-delay:0.15s">
+      <p class="section-label">We Are</p>
+      <h2 class="section-title">Born from Loss, Built for Hope</h2>
+      <p class="section-subtitle">Our Story – A Family's Journey to Transform Tragedy into Purpose</p>
+      <div class="about-block">
+        <h4>A Family's Determination</h4>
+        <p>In 2012, our world changed forever when our three sons and cousins—Archie, George, and Isaac—were diagnosed with a terminal disease. Following Archie's death in 2022 at just 16 years old, his courage and determination to live fully became the foundation for what DETERMEND represents today.</p>
+      </div>
+      <div class="about-block">
+        <p>His twin brothers, George and Isaac, will turn 16 this year. Every day with them is a gift, and every day we work to build something that honours not just Archie's memory, but the thousands of families walking similar paths.</p>
+      </div>
+      <div class="about-quote">DETERMEND isn't just a company or a brand. It's a promise.</div>
+      <div class="about-block">
+        <h4>A Brand Built Out of Necessity</h4>
+        <p>DETERMEND wasn't born in a boardroom. It emerged from the darkest moments of our lives. Following Archie's death at 16, we faced a choice: let grief consume us, or channel it into something that could help other families walking the same impossible path.</p>
+      </div>
+      <div class="about-block">
+        <p style="font-weight:700;color:#111;">DETERMEND exists because it had to. And now it exists for YOU.</p>
+      </div>
+      <p style="font-size:0.8rem;color:#888;">Email us at <a href="mailto:info@determend.com" style="color:var(--orange);">info@determend.com</a> for more information</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── EVENTS ─── -->
+<section id="events">
+  <div class="events-inner">
+    <div class="events-header">
+      <div class="fade-in events-header-text" style="transition-delay:0.15s">
+        <p class="section-label" style="color:var(--orange);">Events</p>
+        <h2 class="section-title" style="color:var(--white);">24HR Global Sweet 16 Moveathon</h2>
+        <p style="color:var(--orange);font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:2px;margin-bottom:16px;">31st May 2026 · Location: Roscommon or Online</p>
+        <div class="events-main-text">
+          <p>On May 1st, George &amp; Isaac turned 16.<br>Their brother Archie died aged 16.<br><strong>Time is against us.</strong></p>
+          <br>
+          <p>So we're asking everyone to be part of this.<br>Run, bake, walk, cycle, paint or <em>anything</em>. Just do 16 of something.</p>
+          <br>
+          <p style="font-size:0.82rem;font-style:italic;color:#777;">e.g. 16km · 16 minutes · 1.6 miles · 16 push ups · 16 acts of kindness · 16 hugs · 16 hair cuts · 16 cupcakes · 16 drawings.</p>
+          <br>
+          <p>Be part of a global movement raising awareness and supporting the fight to END Duchenne. <em>Thank you for being DetermEND 🧡💪</em></p>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:24px;">
+          <a href="https://efcf24c1.sibforms.com/serve/MUIFAJQb5IZOTbVE3AGk7Epq0zflYIwjvrI6rO3SQw-zy_2OqoXNnNgjLO7nKVhlnWXN5BpFBegyAhwIqago1Jc2XzrijLE9RpXGq7hwDf8E_MB7T7tN6iACzn97A-B6AtyDQtZBkskihzm-0GV0dXss_VkJQ3eBQIjjDlg9JuwVpQE1588JGHh_9n8qhxAYeQNlZfWbdJhQu4F06w==" target="_blank" class="btn btn-orange">JOIN IN NOW</a>
+          <a href="https://chat.whatsapp.com/CKrVYdaIJQp09G3mRw2I73" target="_blank" class="btn btn-outline">WhatsApp Community</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Countdown inside events -->
+    <div style="background:#1a1a1a;border-radius:8px;padding:32px;text-align:center;margin-bottom:40px;" class="fade-in">
+      <p style="font-size:0.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--orange);font-weight:700;margin-bottom:16px;">Countdown to May 31st</p>
+      <div class="countdown">
+        <div class="countdown-unit"><span class="countdown-num" id="cd-days2">00</span><span class="countdown-word">Days</span></div>
+        <div class="countdown-sep" style="color:#444;">—</div>
+        <div class="countdown-unit"><span class="countdown-num" id="cd-hours2">00</span><span class="countdown-word">Hours</span></div>
+        <div class="countdown-sep" style="color:#444;">—</div>
+        <div class="countdown-unit"><span class="countdown-num" id="cd-mins2">00</span><span class="countdown-word">Minutes</span></div>
+        <div class="countdown-sep" style="color:#444;">—</div>
+        <div class="countdown-unit"><span class="countdown-num" id="cd-secs2">00</span><span class="countdown-word">Seconds</span></div>
+      </div>
+    </div>
+
+    <div class="events-grid fade-in">
+      <div class="event-card">
+        <p class="event-card-tag">📍 Dublin City Centre</p>
+        <h3>Vhi Mini Marathon</h3>
+        <p class="event-card-loc">31st May 2026</p>
+        <p>As George and Isaac turn 16 this year, we're honouring their brother's memory and supporting families facing terminal illnesses by taking part.</p>
+        <p class="event-card-status">SOLD OUT – BUT PLEASE SUPPORT THOSE TAKING PART!</p>
+        <p style="font-size:0.82rem;color:#aaa;margin-bottom:16px;">We will be there and we can't wait to see you all!</p>
+        <a href="https://chat.whatsapp.com/CKrVYdaIJQp09G3mRw2I73" target="_blank" class="btn btn-outline">Updates on WhatsApp</a>
+      </div>
+      <div class="event-card">
+        <p class="event-card-tag">🏃 Virtual</p>
+        <h3>Virtual Run Club</h3>
+        <p class="event-card-loc">Be Determend – Run / Jog / Walk</p>
+        <p>Join our Strava community and be part of the movement. Run, jog or walk – every step counts.</p>
+        <a href="https://strava.app.link/S5XIhOllC1b" target="_blank" class="btn btn-orange" style="display:inline-block;margin-bottom:12px;">Join Here</a>
+      </div>
+      <div class="event-card" style="display:none;">
+        <p class="event-card-tag">☕ Weekly</p>
+        <h3>Sunday Run</h3>
+        <p class="event-card-loc">Every Sunday Morning · Limited Spaces</p>
+        <p>Clear your mind every Sunday morning. Meet new people, have fun, and network! Limited/Selective Spaces.</p>
+        <a href="mailto:info@determend.com" class="btn btn-outline">Email to Join</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── WHY US ─── -->
+<section id="whyus">
+  <div class="whyus-inner">
+    <div class="whyus-top">
+      <div class="fade-in" style="transition-delay:0.15s">
+        <p class="section-label">Why Determend?</p>
+        <h2 class="section-title">Built Different. Built Better.</h2>
+        <div class="features-grid">
+          <div class="feature-item" onclick="const el = document.getElementById('detail-1'); const offset = 84; const pos = el.getBoundingClientRect().top + window.pageYOffset - offset; window.scrollTo({top: pos, behavior: 'smooth'});" style="cursor:pointer;"><div class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><span>Fixed €1.60 Fee – No Penalty for Generosity</span></div>
+          <div class="feature-item" onclick="const el = document.getElementById('detail-2'); const offset = 84; const pos = el.getBoundingClientRect().top + window.pageYOffset - offset; window.scrollTo({top: pos, behavior: 'smooth'});" style="cursor:pointer;"><div class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><span>Built to Help You Raise More</span></div>
+          <div class="feature-item" onclick="const el = document.getElementById('detail-3'); const offset = 84; const pos = el.getBoundingClientRect().top + window.pageYOffset - offset; window.scrollTo({top: pos, behavior: 'smooth'});" style="cursor:pointer;"><div class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><span>Community-Driven Momentum</span></div>
+          <div class="feature-item" onclick="const el = document.getElementById('detail-4'); const offset = 84; const pos = el.getBoundingClientRect().top + window.pageYOffset - offset; window.scrollTo({top: pos, behavior: 'smooth'});" style="cursor:pointer;"><div class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><span>Exposure Across DETERMEND Channels</span></div>
+          <div class="feature-item" onclick="const el = document.getElementById('detail-5'); const offset = 84; const pos = el.getBoundingClientRect().top + window.pageYOffset - offset; window.scrollTo({top: pos, behavior: 'smooth'});" style="cursor:pointer;"><div class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><span>Your Own Dedicated Campaign Page</span></div>
+          <div class="feature-item" onclick="const el = document.getElementById('detail-6'); const offset = 84; const pos = el.getBoundingClientRect().top + window.pageYOffset - offset; window.scrollTo({top: pos, behavior: 'smooth'});" style="cursor:pointer;"><div class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><span>Full Control &amp; Flexibility</span></div>
+          <div class="feature-item" onclick="const el = document.getElementById('detail-1'); const offset = 84; const pos = el.getBoundingClientRect().top + window.pageYOffset - offset; window.scrollTo({top: pos, behavior: 'smooth'});" style="cursor:pointer;"><div class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><span>Your Own WhatsApp Community</span></div>
+          <div class="feature-item" onclick="const el = document.getElementById('detail-1'); const offset = 84; const pos = el.getBoundingClientRect().top + window.pageYOffset - offset; window.scrollTo({top: pos, behavior: 'smooth'});" style="cursor:pointer;"><div class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><span>Your Own Strava Community</span></div>
+          <div class="feature-item" onclick="const el = document.getElementById('detail-7'); const offset = 84; const pos = el.getBoundingClientRect().top + window.pageYOffset - offset; window.scrollTo({top: pos, behavior: 'smooth'});" style="cursor:pointer;"><div class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><span>Sell Merchandise &amp; Unlock New Revenue</span></div>
+          <div class="feature-item" onclick="const el = document.getElementById('detail-8'); const offset = 84; const pos = el.getBoundingClientRect().top + window.pageYOffset - offset; window.scrollTo({top: pos, behavior: 'smooth'});" style="cursor:pointer;"><div class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><span>Campaigns Inside the DETERMEND App</span></div>
+          <div class="feature-item" onclick="const el = document.getElementById('detail-9'); const offset = 84; const pos = el.getBoundingClientRect().top + window.pageYOffset - offset; window.scrollTo({top: pos, behavior: 'smooth'});" style="cursor:pointer;"><div class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><span>Multi-Currency, Built for Global Giving</span></div>
+          <div class="feature-item" onclick="const el = document.getElementById('detail-10'); const offset = 620; const pos = el.getBoundingClientRect().top + window.pageYOffset - offset; window.scrollTo({top: pos, behavior: 'smooth'});" style="cursor:pointer;"><div class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><span>Smarter Currency Options</span></div>
+          <div class="feature-item" onclick="const el = document.getElementById('detail-11'); const offset = 620; const pos = el.getBoundingClientRect().top + window.pageYOffset - offset; window.scrollTo({top: pos, behavior: 'smooth'});" style="cursor:pointer;"><div class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><span>Transparent &amp; Trust-First Approach</span></div>
+          <div class="feature-item" onclick="const el = document.getElementById('detail-12'); const offset = 620; const pos = el.getBoundingClientRect().top + window.pageYOffset - offset; window.scrollTo({top: pos, behavior: 'smooth'});" style="cursor:pointer;"><div class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><span>Fast &amp; Simple to Launch</span></div>
+          <div class="feature-item" onclick="const el = document.getElementById('detail-13'); const offset = 420; const pos = el.getBoundingClientRect().top + window.pageYOffset - offset; window.scrollTo({top: pos, behavior: 'smooth'});" style="cursor:pointer;"><div class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><span>Designed for Meaningful Contributions</span></div>
+          <div class="feature-item" onclick="const el = document.getElementById('detail-14'); const offset = 320; const pos = el.getBoundingClientRect().top + window.pageYOffset - offset; window.scrollTo({top: pos, behavior: 'smooth'});" style="cursor:pointer;"><div class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><span>Early Partner Advantage</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="whyus-details fade-in">
+      <h3>The Details – Why Every Point Matters</h3>
+      <div class="detail-item" id="detail-1"><div class="detail-num">1</div><p>A simple, fixed fee per donation, regardless of size. Larger contributions are not reduced by increasing platform costs — ensuring more of every donation reaches your cause.</p></div>
+      <div class="detail-item" id="detail-2"><div class="detail-num">2</div><p>We don't just host your campaign — we help you grow it with proven strategies, ideas, and insights from real fundraising experience.</p></div>
+      <div class="detail-item" id="detail-3"><div class="detail-num">3</div><p>Benefit from a growing network of supporters discovering and engaging with campaigns across DETERMEND.</p></div>
+      <div class="detail-item" id="detail-4"><div class="detail-num">4</div><p>We actively support and share campaigns across our platform and social media to help increase visibility and reach.</p></div>
+      <div class="detail-item" id="detail-5"><div class="detail-num">5</div><p>Launch your own custom page (e.g. yourcause.determend.com) where you control your story, updates, events, and content.</p></div>
+      <div class="detail-item" id="detail-6"><div class="detail-num">6</div><p>Easily edit your page, add forms, promote events, and manage your campaign your way.</p></div>
+      <div class="detail-item" id="detail-7"><div class="detail-num">7</div><p>Built-in shop functionality allows you to sell merchandise and create additional income streams beyond donations.</p></div>
+      <div class="detail-item" id="detail-8"><div class="detail-num">8</div><p>Your campaign becomes part of a wider ecosystem where supporters can discover and engage with multiple causes.</p></div>
+      <div class="detail-item" id="detail-9"><div class="detail-num">9</div><p>Receive donations from around the world with the ability to hold funds in local currencies and choose how and when to convert.</p></div>
+      <div class="detail-item" id="detail-10"><div class="detail-num">10</div><p>On request, we can introduce trusted FX providers used by other fundraisers, which may offer lower conversion rates than traditional banks.</p></div>
+      <div class="detail-item" id="detail-11"><div class="detail-num">11</div><p>Clear breakdowns of where every euro goes — helping build confidence with your donors.</p></div>
+      <div class="detail-item" id="detail-12"><div class="detail-num">12</div><p>Get your campaign live quickly without complex setup or technical barriers.</p></div>
+      <div class="detail-item" id="detail-13"><div class="detail-num">13</div><p>Our structure supports all donors, including those making larger contributions, by keeping fees consistent and predictable.</p></div>
+      <div class="detail-item" id="detail-14"><div class="detail-num">14</div><p>Join an early group of campaigns on DETERMEND and become part of a growing, purpose-driven movement.</p></div>
+      <div class="detail-item" id="detail-15"><div class="detail-num">15</div><p>Limited early-stage access gives your campaign visibility, positioning, and recognition as part of the founding network.</p></div>
+    </div>
+    <div class="whyus-cta fade-in" style="margin-top:40px;">
+      <a href="https://app.determend.com/login?fundraiser=yes" target="_blank" class="btn btn-orange">Click here to start your own Fundraiser</a>
+      <p style="margin-top:12px;font-size:0.9rem;color:#787878;">Only accepting fundraisers for the Join Our Boys Trust right now.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── HOW IT WORKS ─── -->
+<section id="howitworks">
+  <div class="how-inner">
+    <div class="how-top">
+      <div class="fade-in how-top-text" style="transition-delay:0.15s">
+        <p class="section-label" style="color:var(--orange);">How To Start A Campaign</p>
+        <h2 class="section-title" style="color:var(--white);">Four Simple Steps</h2>
+        <p style="color:#aaa;font-size:0.9rem;line-height:1.7;margin-bottom:24px;">We work with you personally — no robots, just humans — to build your bespoke campaign from the ground up.</p>
+        <a href="https://app.determend.com/" target="_blank" class="btn btn-orange">Click here to start your own Fundraiser</a>
+        <p style="margin-top:12px;font-size:0.9rem;color:#ccc;">Only accepting fundraisers for the Join Our Boys Trust right now.</p>
+      </div>
+    </div>
+    <div class="steps-grid fade-in">
+      <div class="step-card" data-step="1">
+        <div class="step-num">01</div>
+        <p class="step-tag">WAIT LIST ONLY</p>
+        <p class="step-title">Request to Start a Campaign</p>
+        <p>Submit your interest via our waitlist. Limited early-stage access gives your campaign visibility as part of the founding network.</p>
+        <a href="https://app.determend.com/" target="_blank" class="btn btn-orange" style="margin-top:16px;font-size:0.65rem;padding:10px 20px;">Click Here</a>
+      </div>
+      <div class="step-card" data-step="2">
+        <div class="step-num">02</div>
+        <p class="step-tag">REVIEW</p>
+        <p class="step-title">Verification</p>
+        <p>If approved by our expert fundraising team you will be contacted to provide more details of your campaign.</p>
+      </div>
+      <div class="step-card" data-step="3">
+        <div class="step-num">03</div>
+        <p class="step-tag">HANDS ON</p>
+        <p class="step-title">Getting Personal</p>
+        <p>Work with our expert team to build your bespoke campaign. No robots — just humans who care about your cause.</p>
+      </div>
+      <div class="step-card" data-step="4">
+        <div class="step-num">04</div>
+        <p class="step-tag">GO LIVE</p>
+        <p class="step-title">Approval</p>
+        <p>Once all steps above are completed you will receive your links — all ready to be DetermEND.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TERMS ─── -->
+<section id="terms">
+  <div class="terms-inner">
+    <p class="section-label">Legal</p>
+    <h2 class="section-title">Terms &amp; Conditions / Policies</h2>
+    <div class="orange-divider" style="margin:0 0 32px;"></div>
+    <div class="terms-tabs">
+      <button class="tab-btn active" onclick="showTab('terms-tab')">Terms &amp; Conditions</button>
+      <button class="tab-btn" onclick="showTab('privacy-tab')">Privacy Policy</button>
+      <button class="tab-btn" onclick="showTab('cookie-tab')">Cookie Policy</button>
+      <button class="tab-btn" onclick="showTab('trust-tab')">Trust &amp; Transparency</button>
+    </div>
+
+    <div id="terms-tab" class="tab-panel active">
+      <h2>Terms &amp; Conditions</h2>
+      <p>These Terms and Conditions ("Terms") govern your use of the Determend platform ("Platform", "Site", "We", "Us", "Our"). By accessing or using the Platform, you agree to be bound by these Terms.</p>
+      <hr>
+      <h3>1. About Us</h3>
+      <p>Determend is a purpose-driven fundraising and community platform supporting charitable causes, community initiatives, and impact-led campaigns. We provide tools that enable users to create fundraising campaigns, support verified causes, share stories and build community, and purchase products where applicable.</p>
+      <hr>
+      <h3>2. Eligibility</h3>
+      <p>You must be at least 16 years old to use the Platform. If you are under 18, you must have permission from a parent or guardian.</p>
+      <hr>
+      <h3>3. Accounts</h3>
+      <p>To access certain features, you may be required to create an account. You agree to provide accurate and complete information, keep your login details secure, and be responsible for all activity under your account. We reserve the right to suspend or terminate accounts that violate these Terms.</p>
+      <hr>
+      <h3>4. Nature of the Platform</h3>
+      <p>Determend acts as a facilitator between donors, fundraisers, and charities/causes. We do not own or control the charities listed, guarantee the outcome of fundraising campaigns, or take responsibility for how funds are ultimately used.</p>
+      <hr>
+      <h3>5. Fundraising &amp; Donations</h3>
+      <ul><li>All donations must be made through the Platform and its authorised payment providers (e.g. Stripe).</li><li>Funds raised are transferred to the designated charity, trust, or organisation.</li><li>Fundraisers must not collect funds outside the Platform in connection with campaigns hosted on Determend.</li><li>Donations are generally final.</li></ul>
+      <hr>
+      <h3>6. Verification &amp; Compliance</h3>
+      <p>We may request documentation to verify identity, authority to raise funds, and charity or organisation status. Failure to provide required information may result in suspension of campaigns or withholding funds.</p>
+      <hr>
+      <h3>17. Governing Law</h3>
+      <p>These Terms are governed by the laws of Ireland. Any disputes will be subject to the jurisdiction of the Irish courts.</p>
+      <hr>
+      <h3>18. Contact</h3>
+      <p>For support or queries, please contact: <a href="mailto:info@determend.com">info@determend.com</a></p>
+    </div>
+
+    <div id="privacy-tab" class="tab-panel">
+      <h2>Privacy Policy</h2>
+      <p>This Privacy Policy explains how Determend collects, uses, and protects your personal data when you use our platform. By using Determend, you agree to the collection and use of information in accordance with this policy.</p>
+      <hr>
+      <h3>1. Who We Are</h3>
+      <p>Determend is a fundraising and community platform supporting charitable causes, campaigns, and impact-driven initiatives. We act as a data controller for the purposes of applicable data protection laws, including the General Data Protection Regulation (GDPR).</p>
+      <hr>
+      <h3>2. What Information We Collect</h3>
+      <p>We may collect: your name, email address, phone number, billing and payment details, address, account login details, and any information included in fundraising pages or messages. We also collect donation amounts, dates, and automatically collected data such as IP address, device type, and browser type.</p>
+      <hr>
+      <h3>8. Your Rights (GDPR)</h3>
+      <p>Under GDPR, you have the right to access your personal data, correct inaccurate data, request deletion, restrict or object to processing, data portability, and withdraw consent at any time. Contact: <a href="mailto:info@determend.com">info@determend.com</a></p>
+      <hr>
+      <h3>Contact Us</h3>
+      <p><a href="mailto:info@determend.com">info@determend.com</a></p>
+    </div>
+
+    <div id="cookie-tab" class="tab-panel">
+      <h2>Cookie Policy</h2>
+      <p>This Cookie Policy explains how Determend uses cookies and similar technologies when you visit our platform.</p>
+      <hr>
+      <h3>1. What Are Cookies?</h3>
+      <p>Cookies are small text files stored on your device when you visit a website. They help websites function properly and improve user experience.</p>
+      <hr>
+      <h3>3. Types of Cookies We Use</h3>
+      <p><strong>Strictly Necessary:</strong> Essential for operation, logging in, processing donations, and security.</p>
+      <p><strong>Performance &amp; Analytics:</strong> Help us understand how users interact with the Platform by collecting anonymous data.</p>
+      <p><strong>Functionality:</strong> Remember your preferences such as language settings.</p>
+      <p><strong>Third-Party:</strong> Services like Stripe may place cookies to process secure payments and prevent fraud.</p>
+      <hr>
+      <h3>Contact</h3>
+      <p><a href="mailto:info@determend.com">info@determend.com</a></p>
+    </div>
+
+    <div id="trust-tab" class="tab-panel">
+      <h2>Trust &amp; Transparency</h2>
+      <p>At Determend, trust isn't a feature — it's the foundation. We know that when someone donates, they're not just giving money. They're giving belief, hope, and trust that it will make a real difference.</p>
+      <hr>
+      <h3>1. Where Your Money Goes</h3>
+      <p>Donations are processed securely via trusted providers such as Stripe. Funds are transferred to the intended charity, trust, or organisation. We do not allow fundraisers to collect donations outside the platform.</p>
+      <hr>
+      <h3>2. Supporting Real Causes</h3>
+      <p>We work with real people, real stories, and real challenges. Before funds are released, we may verify the identity of fundraisers, request documentation for charities or trusts, and review campaigns for authenticity.</p>
+      <hr>
+      <h3>5. Taking Action Against Misuse</h3>
+      <p>We have zero tolerance for fraudulent campaigns, misuse of funds, and misleading information. We reserve the right to suspend or remove campaigns, withhold donations, and take further action where necessary.</p>
+      <hr>
+      <p style="font-weight:700;color:#111;">Stay Determend.</p>
+      <p>If you ever have concerns, contact: <a href="mailto:info@determend.com">info@determend.com</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTACT ─── -->
+<section id="contact">
+  <div class="contact-inner">
+    <p class="section-label" style="color:var(--orange);">Get In Touch</p>
+    <h2 class="section-title" style="color:var(--white);">Contact Us</h2>
+    <div class="orange-divider"></div>
+    <div style="margin-top:24px;">
+      <p class="contact-item"><strong>Email:</strong><a href="mailto:info@determend.com">info@determend.com</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <p>© 2026 Determend. All rights reserved.</p>
+  <div style="display:flex;gap:20px;flex-wrap:wrap;">
+    <a href="#terms">Terms &amp; Conditions</a>
+    <a href="#terms">Privacy Policy</a>
+    <a href="#terms">Cookie Policy</a>
+  </div>
+</footer>
+
+<script>
+  // ─── HAMBURGER ───
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => { mobileMenu.classList.toggle('open'); });
+  function closeMenu() { mobileMenu.classList.remove('open'); }
+
+  // ─── TABS ───
+  function showTab(id) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.currentTarget.classList.add('active');
+  }
+
+  // ─── COUNTDOWN ───
+  function updateCountdown() {
+    const target = new Date('2026-05-31T00:00:00').getTime();
+    const now = new Date().getTime();
+    const diff = target - now;
+    if (diff <= 0) {
+      ['cd-days','cd-hours','cd-mins','cd-secs','cd-days2','cd-hours2','cd-mins2','cd-secs2'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = '00';
+      });
+      return;
+    }
+    const d = Math.floor(diff / (1000*60*60*24));
+    const h = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+    const m = Math.floor((diff % (1000*60*60)) / (1000*60));
+    const s = Math.floor((diff % (1000*60)) / 1000);
+    const pad = n => String(n).padStart(2,'0');
+    ['cd-days','cd-days2'].forEach(id => { const el = document.getElementById(id); if(el) el.textContent = pad(d); });
+    ['cd-hours','cd-hours2'].forEach(id => { const el = document.getElementById(id); if(el) el.textContent = pad(h); });
+    ['cd-mins','cd-mins2'].forEach(id => { const el = document.getElementById(id); if(el) el.textContent = pad(m); });
+    ['cd-secs','cd-secs2'].forEach(id => { const el = document.getElementById(id); if(el) el.textContent = pad(s); });
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // ─── FADE IN ON SCROLL ───
+  const fadeEls = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.1 });
+  fadeEls.forEach(el => observer.observe(el));
+
+  // ─── NAV ACTIVE ───
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 20) { nav.style.borderBottom = '1px solid #222'; }
+    else { nav.style.borderBottom = 'none'; }
+  });
+</script>
+</body>
+</html>
